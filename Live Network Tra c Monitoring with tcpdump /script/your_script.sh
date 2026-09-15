@@ -1,4 +1,3 @@
-cat << 'EOF' > scripts/your_script.sh
 #!/bin/bash
 # ------------------------------------------------------------------
 # PoC Automation Script: Live Network Traffic Monitoring with tcpdump
@@ -99,4 +98,3 @@ echo ""
 echo "========================================================="
 echo "[✓] Analysis complete! Logs stored in: ${LOGS_DIR}/"
 echo "========================================================="
-EOF
