@@ -1,0 +1,31 @@
+# Proof of Concept (PoC) Technical Report
+**Project Name:** FinPay Cloud Security Architecture & Threat Vector Validation  
+**Author:** Security Engineering & Architecture Team  
+**Date:** September 2026  
+**Document Classification:** Internal / Confidential  
+
+---
+
+## 1. Executive Summary
+This Proof of Concept (PoC) evaluates the security posture and architectural trust boundaries of **FinPay Core Services**, a multi-tier cloud-native payment application. The objective was to validate high-risk threats identified during STRIDE/DREAD threat modeling and determine whether architectural controls effectively prevent identity spoofing, broken object-level authorization (BOLA), and internal data exfiltration.
+
+The PoC confirmed two critical design vulnerabilities:
+1. **Broken Object Level Authorization (BOLA)** on the payment capture endpoint (`/v1/payment/capture`), enabling unauthorized account balance debits.
+2. **Insecure Interservice Communication**, allowing cleartext token inspection and potential request forgery across the internal Kubernetes service mesh.
+
+---
+
+## 2. Target Scope & Architecture
+
+* **Target System:** FinPay Core Services (v1.2.0-rc)
+* **Environment:** AWS Staging VPC (`us-east-1`)
+* **Components Evaluated:**
+  * External API Gateway / Reverse Proxy (TLS 1.3 Termination)
+  * EKS Cluster Workloads (`Customer Service`, `Payment Processing Service`)
+  * Identity Provider: Microsoft Entra ID (OIDC / OAuth 2.0)
+  * Persistence Layer: Amazon RDS PostgreSQL & Amazon S3 Audit Logs
+
+```text
+[Untrusted Client] ---> [AWS API Gateway] ---> [Payment Microservice] ---> [RDS PostgreSQL]
+                              |                      |
+                        [Entra ID IdP]         [Internal Mesh (Unencrypted)]
