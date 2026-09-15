@@ -1,0 +1,76 @@
+cat << 'EOF' > logs/output.log
+=========================================================
+   Live Network Traffic Monitor & Analyzer (tcpdump)    
+=========================================================
+Target Interface: eth0
+Capture Target  : evidence/capture.pcap
+Capture Window  : 300 seconds (5 minutes)
+
+---------------------------------------------------------
+1. INTERFACE STATUS
+---------------------------------------------------------
+eth0 UP 192.168.179.129/24 fe80::8a46:506a:dd77:1e71/64
+
+---------------------------------------------------------
+2. TIMED PACKET CAPTURE EXECUTION
+---------------------------------------------------------
+tcpdump: listening on eth0, link-type EN10MB (Ethernet), snapshot length 262144 bytes
+[Capture ran for 300 seconds via timeout command]
+tcpdump: pcap_loop: truncated dump file; tried to read 2071 captured bytes, only got 1699
+
+---------------------------------------------------------
+3. TOTAL PACKETS CAPTURED
+---------------------------------------------------------
+reading from file evidence/capture.pcap, link-type EN10MB (Ethernet), snapshot length 262144
+3291 packets
+
+---------------------------------------------------------
+4. TOP 5 SOURCE IP ADDRESSES
+---------------------------------------------------------
+   1076 192.168.179.129
+    778 142.251.153.119
+    379 50.6.108.51
+    343 142.251.221.195
+     73 192.168.179.1
+
+---------------------------------------------------------
+5. ARP TRAFFIC ANALYSIS (FIRST 20 PACKETS)
+---------------------------------------------------------
+06:38:34.635527 ARP, Request who-has 192.168.179.2 tell 192.168.179.1, length 46
+06:38:36.102816 ARP, Request who-has 192.168.179.2 tell 192.168.179.1, length 46
+06:38:36.620999 ARP, Request who-has 192.168.179.2 tell 192.168.179.1, length 46
+06:38:37.618322 ARP, Request who-has 192.168.179.2 tell 192.168.179.1, length 46
+06:40:06.054503 ARP, Request who-has 192.168.179.2 tell 192.168.179.1, length 46
+06:40:07.440730 ARP, Request who-has 192.168.179.2 tell 192.168.179.1, length 46
+06:40:08.063510 ARP, Request who-has 192.168.179.2 tell 192.168.179.1, length 46
+06:40:09.058991 ARP, Request who-has 192.168.179.2 tell 192.168.179.1, length 46
+06:40:19.515146 ARP, Request who-has 192.168.179.2 tell 192.168.179.1, length 46
+06:40:20.060551 ARP, Request who-has 192.168.179.2 tell 192.168.179.1, length 46
+06:40:21.060925 ARP, Request who-has 192.168.179.2 tell 192.168.179.1, length 46
+06:40:22.548480 ARP, Request who-has 192.168.179.2 tell 192.168.179.1, length 46
+06:40:23.077706 ARP, Request who-has 192.168.179.2 tell 192.168.179.1, length 46
+06:40:23.717020 ARP, Request who-has 192.168.179.2 tell 192.168.179.129, length 28
+06:40:23.717410 ARP, Reply 192.168.179.2 is-at 00:50:56:f4:85:3d, length 46
+06:40:24.080618 ARP, Request who-has 192.168.179.2 tell 192.168.179.1, length 46
+06:40:33.133950 ARP, Request who-has 192.168.179.2 tell 192.168.179.1, length 46
+06:40:34.088877 ARP, Request who-has 192.168.179.2 tell 192.168.179.1, length 46
+06:40:35.095862 ARP, Request who-has 192.168.179.2 tell 192.168.179.1, length 46
+06:40:36.158521 ARP, Request who-has 192.168.179.2 tell 192.168.179.1, length 46
+
+---------------------------------------------------------
+6. ICMP TRAFFIC ANALYSIS (ECHO REQUEST/REPLY)
+---------------------------------------------------------
+06:39:48.696952 IP 192.168.179.129 > 8.8.8.8: ICMP echo request, id 44187, seq 1, length 64
+06:39:48.710486 IP 8.8.8.8 > 192.168.179.129: ICMP echo reply, id 44187, seq 1, length 64
+06:39:49.698030 IP 192.168.179.129 > 8.8.8.8: ICMP echo request, id 44187, seq 2, length 64
+06:39:49.708663 IP 8.8.8.8 > 192.168.179.129: ICMP echo reply, id 44187, seq 2, length 64
+06:39:50.698985 IP 192.168.179.129 > 8.8.8.8: ICMP echo request, id 44187, seq 3, length 64
+06:39:50.710185 IP 8.8.8.8 > 192.168.179.129: ICMP echo reply, id 44187, seq 3, length 64
+06:39:51.700905 IP 192.168.179.129 > 8.8.8.8: ICMP echo request, id 44187, seq 4, length 64
+06:39:51.712842 IP 8.8.8.8 > 192.168.179.129: ICMP echo reply, id 44187, seq 4, length 64
+06:39:52.702642 IP 192.168.179.129 > 8.8.8.8: ICMP echo request, id 44187, seq 5, length 64
+06:39:52.713539 IP 8.8.8.8 > 192.168.179.129: ICMP echo reply, id 44187, seq 5, length 64
+=========================================================
+END OF LOG EXECUTION
+=========================================================
+EOF
