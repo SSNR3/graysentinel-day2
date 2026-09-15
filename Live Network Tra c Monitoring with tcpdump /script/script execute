@@ -1,0 +1,9 @@
+Make the script executable:
+
+Bash
+chmod +x scripts/your_script.sh
+
+Run it with elevated privileges:
+
+Bash
+sudo ./scripts/your_script.sh
